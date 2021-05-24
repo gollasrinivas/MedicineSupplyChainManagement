@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Srinivas To-Do App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h1 class="display-4 text-center py-1">Medicine Tracker</h1>
+    
+    <div class="jumbotron p-3 shadow-sm">
+      <form id="myForm" action="/" method="POST">
+        <div class="d-flex align-items-center">
+          <input name="med" autofocus autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+          <button name="insert" class="btn btn-primary">Track</button>
+        </div>
+      </form>
+
+<br>
+<div class="jumbotron p-3 shadow-sm">
+    {% if flag==1 %}
+   <h3>ID : {{id}}</h3>
+   <h3>Medicine-Name : {{name}}</h3>
+   <h3>Price : {{price}}</h3>
+   <h3>Status : {{status}}</h3>
+   {% else %}
+    <h3 style="color:red">No medicine found for given ID</h3>
+    {% endif %}
+</div>
+    
+</div>
+  
+    
+   
+  
+    
+  </div>
+  
+</body>
+
+
+
+</html>
+
+
+
+
+</body>
+</html>
