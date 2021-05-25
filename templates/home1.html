@@ -20,10 +20,15 @@
 <br>
 <div class="jumbotron p-3 shadow-sm">
     {% if flag==1 %}
-   <h3>ID : {{id}}</h3>
-   <h3>Medicine-Name :  {{name}}</h3>
-   <h3>Price : {{price}}</h3>
-   <h3>Status : {{status}}</h3>
+<table><tr style="color:blue"><td><h3>ID</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{id}}</h3></td></tr>
+  <tr style="color:blue"><td><h3>Medicine-Name</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{name}}</h3></td></tr>
+  <tr style="color:blue"><td><h3>Price</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{price}}</h3></td></tr>
+  <tr style="color:blue"><td><h3>Status</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{status}}</h3></td></tr>
+
+</table>
+
+
+   
    {% else %}
     <h3 style="color:red">No medicine found for given ID</h3>
     {% endif %}
