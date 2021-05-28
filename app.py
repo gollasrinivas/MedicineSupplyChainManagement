@@ -9,7 +9,7 @@ def hello():
         return render_template('home.html')
     else:
         val=request.form['med']
-        r=requests.get('http://localhost:8080/api/query/'+str(val))
+        r=requests.get('https://sri-server.herokuapp.com/api/query/'+str(val))
         print(r.json())
         if r.status_code == 200:
             m=r.json()['response']
