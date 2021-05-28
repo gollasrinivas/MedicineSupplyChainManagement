@@ -7,6 +7,13 @@
 </head>
 <body>
   <div class="container">
+    <div>
+      <br>
+      <br>
+      <form id="mForm" action="/admin">
+        <input type="submit" class="btn btn-outline-primary" value="  Admin  ">
+        </form>
+      </div>
     <h1 class="display-4 text-center py-1">Medicine Tracker</h1>
     
     <div class="jumbotron p-3 shadow-sm">
@@ -20,10 +27,11 @@
 <br>
 <div class="jumbotron p-3 shadow-sm">
     {% if flag==1 %}
-<table><tr style="color:blue"><td><h3>ID</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{id}}</h3></td></tr>
-  <tr style="color:blue"><td><h3>Medicine-Name</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{name}}</h3></td></tr>
-  <tr style="color:blue"><td><h3>Price</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{price}}</h3></td></tr>
-  <tr style="color:blue"><td><h3>Status</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{status}}</h3></td></tr>
+<table><tr style="color:blue"><td><h3>ID</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{med["carid"]}}</h3></td></tr>
+  <tr style="color:blue"><td><h3>Medicine-Name</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{med["make"]}}</h3></td></tr>
+  <tr style="color:blue"><td><h3>Price</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{med["model"]}}</h3></td></tr>
+  <tr style="color:blue"><td><h3>State</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{med["colour"]}}</h3></td></tr>
+  <tr style="color:blue"><td><h3>Status</h3></td><td><h3 style="color:rgb(55, 83, 10)">: {{med["owner"]}}</h3></td></tr>
 
 </table>
 

@@ -1,0 +1,219 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin-page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div>
+      <br>
+      <br>
+      <form id="mForm" action="/">
+        <input type="submit" class="btn btn-outline-primary" value="  Track-medicine  ">
+        </form>
+      </div>
+      <div style="background: rgb(43, 248, 248);"">
+    <h1 class="display-4 text-center py-1">Admin</h1>
+    </div>
+    <div style="background: rgb(6, 250, 250);">
+        <table class="table table-borderless">
+            <tr>
+                <td><button  onclick="create()" class="btn btn-primary" >Add Medicine</button></td>
+                <td><button onclick="changeStatus()" class="btn btn-secondary" >Change Status</button></td> 
+                <td><button onclick="meddisplay()" class="btn btn-success" >views medicines</button></td>      
+            </tr>
+        </table>
+    </div>
+    <div class="jumbotron p-3 shadow-sm" >
+        <div class="jumbotron p-3 shadow-sm" id="ddisplay" style="display:none;">
+         
+            <form id="myForm" action="/display"  >
+              <input type="submit"  class="btn btn-success" value="click here  to  display all medicine">
+            </form>
+      
+          </div>
+          <div id="fla" style="display:block;">
+    {% if flag==1 %}
+    <div class="jumbotron p-3 shadow-sm" id="f1">
+        <h1 class="display-4 text-center py-1">Medicine added successfully</h1>
+    </div>
+    {% endif %}
+    {% if flag==2 %}
+    <div class="jumbotron p-3 shadow-sm" id="f2">
+        <h1 class="display-4 text-center py-1">Status changed succesfully</h1>
+    </div>
+    {% endif %}
+    {% if flag==3 %}
+    <div class="jumbotron p-3 shadow-sm" id="f3">
+        <table class="table table-hover">
+            <tr>
+                <td>ID</td><td>Name</td><td>price</td><td>state</td><td>status</td>
+            </tr>
+            {% for i in allmed %}
+            <tr>
+                <td>{{i["carid"]}}</td><td>{{i["make"]}}</td><td>{{i["model"]}}</td><td>{{i["colour"]}}</td><td>{{i["owner"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</div>
+    <div class="jumbotron p-3 shadow-sm" id="dcreate" style="display:none" >
+      <form id="myForm" action="/admin" method="POST">
+
+        <div class="d-flex align-items-center" >
+            <table>
+                <tr>
+                    <td>
+                        <label> ID</label>
+                    </td>
+                    <td>
+                        <input name="carid" autofocus autocomplete="off" required class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> Name</label>
+                    </td>
+                    <td>
+                        <input name="make" autofocus required autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> price</label>
+                    </td>
+                    <td>
+                        <input name="model" autofocus required autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> State</label>
+                    </td>
+                    <td>
+                        <input name="colour" autofocus required autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> status</label>
+                    </td>
+                    <td>
+                        <input name="owner" autofocus required autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="addMed" class="btn btn-primary" value="add medicine" />
+                    </td>
+                </tr>
+
+            </table>
+
+          
+        </div>
+      </form>
+
+    </div>  
+    
+        
+    <div class="jumbotron p-3 shadow-sm" id="dchange" style="display:none">
+        <form id="myForm" action="/change" method="POST">
+          <div class="d-flex align-items-center">
+            <table>
+                <tr>
+                    <td>
+                        <label> ID</label>
+                    </td>
+                    <td>
+                        <input name="pid" autofocus required autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> status</label>
+                    </td>
+                    <td>
+                        <input name="powner" autofocus required autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                    </td>
+                </tr>
+                <tr>
+                    <input type="submit" value="change status"/>
+                </tr>
+          </div>
+        </form>
+  
+      </div>
+
+    
+    
+    
+   
+    
+   
+  
+    
+  </div>
+  
+
+  <script>
+      function create() {
+  var x = document.getElementById("dcreate");
+  var y = document.getElementById("dchange");
+  var z = document.getElementById("ddisplay");
+  var a = document.getElementById("fla");
+
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.display = "none";
+    z.style.display = "none";
+    a.style.display = "none";
+
+    
+  } 
+}
+function meddisplay() {
+  var x = document.getElementById("dcreate");
+  var y = document.getElementById("dchange");
+  var z = document.getElementById("ddisplay");
+  var a = document.getElementById("fla");
+
+  if (z.style.display === "none") {
+    x.style.display = "none";
+    y.style.display = "none";
+    z.style.display = "block";
+    a.style.display = "none";
+
+  } 
+}
+function changeStatus() {
+  var x = document.getElementById("dcreate");
+  var y = document.getElementById("dchange");
+  var z = document.getElementById("ddisplay");
+  var a = document.getElementById("fla");
+
+  if (y.style.display === "none") {
+    x.style.display = "none";
+    y.style.display = "block";
+    z.style.display = "none";
+    a.style.display = "none";
+
+  } 
+}
+
+  </script>
+</body>
+
+
+
+</html>
+
+
+
+
+</body>
+</html>
