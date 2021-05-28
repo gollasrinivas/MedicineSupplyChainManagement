@@ -34,21 +34,19 @@ def admin():
         }
               
 
-        requests.post('http://localhost:8080/api/addcar/',data=obj)
+        r=requests.post('https://sri-server.herokuapp.com/api/addcar/',data=obj)
         return render_template("admin.html",flag=1)
 
 @app.route('/change',methods=["POST"])
 def change():
-    res=requests.put('http://localhost:8080/api/changeowner/'+str(request.form["pid"]),data={"owner":request.form["powner"]})
+    res=requests.put('https://sri-server.herokuapp.com/api/changeowner/'+str(request.form["pid"]),data={"owner":request.form["powner"]})
     return render_template("admin.html",flag=2)
 
 
 @app.route('/display',methods=["GET"])
 def display():
-    res=requests.get('http://localhost:8080/api/queryallcars')
-    print("-------------------")
-    print(res.json())
-    print("aaa")
+    res=requests.get('https://sri-server.herokuapp.com/api/queryallcars')
+
     return render_template("admin.html",flag=3,allmed=res.json()['response'])
 
         
