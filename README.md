@@ -1,2 +1,2 @@
 # MedicineSupplyChainManagement
-A basic web application using flask 
+A basic web application using flask and express.js 
